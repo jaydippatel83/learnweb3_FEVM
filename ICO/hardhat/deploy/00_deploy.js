@@ -9,7 +9,7 @@ const util = require("util");
 const request = util.promisify(require("request"));
 
 const DEPLOYER_PRIVATE_KEY = process.env.PRIVATE_KEY;
-  
+const cryptoDevsNFTContract = '0x4AAFc3545FF5ea4E841aCbac6Ca74c85f0c5613B';
  
 async function callRpc(method, params) {
   var options = {
@@ -44,7 +44,7 @@ module.exports = async ({ deployments }) => {
 
   await deploy("CryptoDevToken", {
     from: deployer.address,
-    args: [], 
+    args: [cryptoDevsNFTContract], 
     maxPriorityFeePerGas: priorityFee,
     log: true,
   });  
